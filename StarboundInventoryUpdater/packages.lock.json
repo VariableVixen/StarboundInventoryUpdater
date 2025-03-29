@@ -1,6 +1,13 @@
 {
   "version": 1,
   "dependencies": {
-    "net7.0-windows7.0": {}
+    "net9.0-windows7.0": {
+      "Microsoft.NET.ILLink.Tasks": {
+        "type": "Direct",
+        "requested": "[9.0.2, )",
+        "resolved": "9.0.2",
+        "contentHash": "+KFnCLVPicEq99ko0tq+ycTvNLXHw0tImmTZjPloB/DOFLPT56KLfk5aS7wbgXRPzYhXTTBYLGaABea5mke77w=="
+      }
+    }
   }
 }
