@@ -52,24 +52,23 @@ jobs:
         run: |
           echo "Current version is ${{ steps.data.outputs.buildVersion }} for tag ${{ steps.data.outputs.tagName }} (exists = ${{ steps.check-version-tag.outputs.tagExists }})"
         shell: bash
+
   build:
     needs: precheck
     if: needs.precheck.outputs.tagExists == 'false'
     strategy:
       matrix:
-        configuration: [Debug, Release]
+        configuration: [debug, release]
     runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: recursive
-      # Install the .NET Core workload
       - name: Install .NET Core
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 6.0.x
-      # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
       - name: Build
@@ -79,14 +78,14 @@ jobs:
         with:
           type: zip
           filename: ${{ matrix.configuration }}.zip
-          directory: ${{ env.MAIN_PROJECT }}\bin\${{ matrix.configuration }}
+          directory: ${{ env.MAIN_PROJECT }}\bin\${{ matrix.configuration }}\portable
           path: "*"
           exclusions: "*.zip"
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.configuration }}
-          path: ${{ env.MAIN_PROJECT }}\bin\${{ matrix.configuration }}\${{ matrix.configuration }}.zip
+          path: ${{ env.MAIN_PROJECT }}\bin\${{ matrix.configuration }}\portable\${{ matrix.configuration }}.zip
           if-no-files-found: error
           retention-days: 1
 
