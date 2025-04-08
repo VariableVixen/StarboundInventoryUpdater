@@ -11,13 +11,6 @@ on:
       - master
       - main
       - release
-  pull_request:
-    paths-ignore:
-      - '*.md'
-    branches:
-      - master
-      - main
-      - release
 
 env:
   MAIN_PROJECT: StarboundInventoryUpdater
@@ -33,7 +26,7 @@ jobs:
       tagExists: ${{ steps.check-version-tag.outputs.tagExists }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Load values
@@ -62,7 +55,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: Install .NET Core
@@ -82,7 +75,7 @@ jobs:
           path: "*"
           exclusions: "*.zip"
       - name: Upload build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.configuration }}
           path: ${{ env.MAIN_PROJECT }}\bin\${{ matrix.configuration }}\portable\${{ matrix.configuration }}.zip
@@ -97,7 +90,7 @@ jobs:
       TAG_NAME: ${{ needs.precheck.outputs.tagName }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Retrieve debug build
         id: download-debug
         uses: actions/download-artifact@v4
