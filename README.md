@@ -6,7 +6,7 @@ As bk3k explained on the mod page, vanilla characters can't be loaded while usin
 
 Enter the Starbound Inventory Upgrader!
 
-All you have to do is download the [latest release](https://github.com/PrincessRTFM/StarboundInventoryUpdater/releases/latest), unzip it somewhere, and run `StarboundInventoryUpdater.exe` to automatically upgrade _all_ of your character files to a 120-slot inventory ready to go. That's it. It's that simple.
+All you have to do is download the [latest release](https://github.com/VariableVixen/StarboundInventoryUpdater/releases/latest), unzip it somewhere, and run `StarboundInventoryUpdater.exe` to automatically upgrade _all_ of your character files to a 120-slot inventory ready to go. That's it. It's that simple.
 
 ## :warning: **THIS WILL AFFECT ALL OF YOUR CHARACTER FILES** :warning:
 
